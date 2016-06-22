@@ -1,0 +1,51 @@
+---
+title: "Baby Names"
+author: "Daniel A Stearns"
+date: "June 20, 2016"
+output: html_document
+---
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+
+setwd("C:/Users/dstearns/Documents/Coursera/Developing Data Products/Assignment") 
+minyr<-1880;
+maxyr<-2016;
+yr_range <- c(minyr:maxyr);
+
+src <- data.frame(
+                 name=factor(), 
+                 sex=factor(), 
+                 num=integer(),
+                 year=factor(),
+                 stringsAsFactors=FALSE);
+
+for (yr in yr_range) {
+  file<-paste("data/yob", yr, ".txt", sep="");
+  if (file.exists(file)) {
+    file_src<-read.csv(file, header=FALSE);
+    file_src$year = yr;
+    colnames(file_src) <- c("name", "sex","num", "year");
+    
+    src<-rbind(src, file_src)
+    #head(src)
+  } 
+}
+
+agg<-aggregate(sex ~ name, data = src, sum);
+nm = "Ashlynn";
+plot(src[src$name==nm,]$year,src[src$name==nm,]$num, col=c("pink","blue"));
+summary(src[src$name==nm,]);
+
+```
+
+You can also embed plots, for example:
+
+```{r, echo=FALSE}
+plot(cars)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

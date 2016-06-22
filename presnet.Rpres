@@ -1,0 +1,41 @@
+Baby Names
+========================================================
+author: Daniel A Stearns
+date: June 21, 2016
+
+
+Application
+========================================================
+The baby names application is a data visualizaton and analysis App that has been developed to demonstrate the frequency of names given at birth from 1800 to 2016 organized by baby sex.
+
+The following features are made available
+
+A summary of the data
+A graphical plot
+A list of corresponding data records
+The user is provided controls to slice and dice the data for more insights
+
+Access
+========================================================
+
+A summary of the data
+
+The App can be accessed securely from anywhere and any device with an internet connection. Click https://dstearns.shinyapps.io/Developing_Data_Products/ to access the App.
+
+A new browser window will open on your device to show the controls and the visualizations in different tabs.
+
+
+Data
+========================================================
+
+The App will reveal meaningful insights into the data using easy to interpret analysis.
+
+```{r, echo=FALSE}
+source("data.R")
+summary(src)
+```
+
+Source Code
+========================================================
+
+The source codes for ui.R and server.R files are available on https://github.com/dstearns/developing_data_products
